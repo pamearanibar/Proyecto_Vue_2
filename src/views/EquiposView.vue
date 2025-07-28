@@ -1,16 +1,26 @@
 <template>
   <div>
+    <label>Buscar por nombre:</label>
+    <input v-model="filtroNombre" placeholder="Buscar por nombre..." />
+
+    <label>Filtrar por categoría:</label>
+    <select v-model="filtroCategoria">
+    <option value="">Todas</option>
+    <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.nombre }}</option>
+    </select>
+
     <EquipoForm 
       :modelValue="equipoActual"
       :categorias="categorias"
       @save="guardarEquipo"
     />
     <EquipoList 
-      :equipos="equipos"
-      :categorias="categorias"
-      @editar="editarEquipo"
-      @eliminar="eliminarEquipo"
-    />
+       :equipos="equiposFiltrados"
+       :categorias="categorias"
+       @editar="editarEquipo"
+       @eliminar="eliminarEquipo"
+/>
+
   </div>
 </template>
 
@@ -22,17 +32,29 @@ import EquipoList from '../components/EquipoList.vue'
 export default {
   components: { EquipoForm, EquipoList },
   data() {
-    return {
-      equipos: [],
-      categorias: [],
-      equipoActual: {
-        nombre: '',
-        marca: '',
-        modelo: '',
-        precio: 0,
-        stock: 0,
-        categoriaId: ''
-      }
+     return {
+        equipos: [],
+        categorias: [],
+        equipoActual: {
+            nombre: '',
+            marca: '',
+            modelo: '',
+            precio: 0,
+            stock: 0,
+            categoriaId: ''
+        },
+        filtroNombre: '',
+        filtroCategoria: ''  
+    }
+  },
+
+  computed: {
+  equiposFiltrados() {
+    return this.equipos.filter(e => {
+      const coincideNombre = e.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase());
+      const coincideCategoria = !this.filtroCategoria || e.categoriaId === Number(this.filtroCategoria);
+      return coincideNombre && coincideCategoria;
+    });
     }
   },
   mounted() {

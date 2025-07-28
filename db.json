@@ -27,9 +27,18 @@
       "nombre": "Monitor multiparámetro",
       "marca": "Philips",
       "modelo": "M3001A",
-      "precio": 3500,
+      "precio": 35000,
       "stock": 4,
       "categoriaId": "1"
+    },
+    {
+      "id": "a896",
+      "nombre": "DEA",
+      "marca": "Philips",
+      "modelo": "DEA23365",
+      "precio": 30000,
+      "stock": 5,
+      "categoriaId": "e54f"
     }
   ]
 }
