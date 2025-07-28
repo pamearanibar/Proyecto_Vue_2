@@ -1,0 +1,35 @@
+{
+  "categorias": [
+    {
+      "id": "1",
+      "nombre": "Monitores"
+    },
+    {
+      "id": "2",
+      "nombre": "Ventiladores"
+    },
+    {
+      "id": "3",
+      "nombre": "Electrobisturí"
+    },
+    {
+      "id": "e54f",
+      "nombre": "Desfibriladores"
+    },
+    {
+      "id": "6d07",
+      "nombre": "Camillas"
+    }
+  ],
+  "equipos": [
+    {
+      "id": "1",
+      "nombre": "Monitor multiparámetro",
+      "marca": "Philips",
+      "modelo": "M3001A",
+      "precio": 3500,
+      "stock": 4,
+      "categoriaId": "1"
+    }
+  ]
+}

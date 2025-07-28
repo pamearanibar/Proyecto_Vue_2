@@ -1,26 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>Importadora de Equipos Médicos</h1>
+    <EquiposView />
+    <CategoriasView />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import EquiposView from './views/EquiposView.vue'
+import CategoriasView from './views/CategoriasView.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    EquiposView,
+    CategoriasView
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
