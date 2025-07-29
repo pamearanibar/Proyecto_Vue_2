@@ -1,12 +1,14 @@
 <template>
   <div>
-    <label>Buscar por nombre:</label>
+    <label>Buscar por nombre: </label>
     <input v-model="filtroNombre" placeholder="Buscar por nombre..." />
 
-    <label>Filtrar por categoría:</label>
+    <label>  Filtrar por categoría: </label>
     <select v-model="filtroCategoria">
-    <option value="">Todas</option>
-    <option v-for="cat in categorias" :key="cat.id" :value="cat.id">{{ cat.nombre }}</option>
+        <option value="">Todas</option>
+        <option v-for="cat in categorias" :key="cat.id" :value="cat.id">
+            {{ cat.nombre }}
+        </option>
     </select>
 
     <EquipoForm 
@@ -49,18 +51,23 @@ export default {
   },
 
   computed: {
-  equiposFiltrados() {
-    return this.equipos.filter(e => {
-      const coincideNombre = e.nombre.toLowerCase().includes(this.filtroNombre.toLowerCase());
-      const coincideCategoria = !this.filtroCategoria || e.categoriaId === Number(this.filtroCategoria);
-      return coincideNombre && coincideCategoria;
-    });
+    equiposFiltrados() {
+        const nombreFiltro = this.filtroNombre.toLowerCase();
+        const categoriaFiltro = this.filtroCategoria;
+
+        return this.equipos.filter(e => {
+            const coincideNombre = e.nombre.toLowerCase().includes(nombreFiltro);
+            const coincideCategoria = !categoriaFiltro || e.categoriaId === categoriaFiltro;
+            return coincideNombre && coincideCategoria;
+        });
     }
   },
   mounted() {
     this.obtenerEquipos()
     this.obtenerCategorias()
   },
+
+  
   methods: {
     obtenerEquipos() {
       axios.get('http://localhost:3000/equipos').then(res => {
@@ -76,10 +83,14 @@ export default {
       if (equipo.id) {
         axios.put(`http://localhost:3000/equipos/${equipo.id}`, equipo).then(() => {
           this.obtenerEquipos()
+          this.reiniciarFormulario()
+
         })
       } else {
         axios.post('http://localhost:3000/equipos', equipo).then(() => {
           this.obtenerEquipos()
+          this.reiniciarFormulario()
+
         })
       }
       this.reiniciarFormulario()

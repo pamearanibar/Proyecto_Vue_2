@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Nueva Categoría</h2>
+    <h2 style="color: #ff880f;">Nueva Categoría</h2>
     <input v-model="localCategoria.nombre" placeholder="Nombre de la categoría" />
     <button @click="guardar">Guardar</button>
   </div>

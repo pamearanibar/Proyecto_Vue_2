@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Lista de Categorías</h2>
+    <h2 style="color: #ff880f;">Lista de Categorías</h2>
     <table border="1">
       <thead>
         <tr>

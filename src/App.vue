@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Importadora de Equipos Médicos</h1>
+    <h1 style="color: #f0000f;">Importadora de Equipos Médicos</h1>
     <EquiposView />
     <CategoriasView />
   </div>

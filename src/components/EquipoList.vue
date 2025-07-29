@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Listado de Equipos Médicos</h2>
+    <h2 style="color: #ff880f;">Listado de Equipos Médicos</h2>
     <table>
       <thead>
         <tr>
